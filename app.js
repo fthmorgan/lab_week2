@@ -43,6 +43,12 @@ function addHealth(points) {
   drawScreen()
 }
 
+function boostHero(healthPoints, name) {
+  let foundHero = heroes.find(hero => hero.name == name)
+  foundHero.health += healthPoints
+  drawScreen()
+}
+
 function levelUpBoss() {
   addHeroPoints(boss.maxHealth)
   boss.level++
@@ -101,9 +107,12 @@ function drawScreen() {
     </section>
     <section class="row d-flex justify-content-between my-3">
       <div class="col-4 border">
-        <button onclick="addHealth(10)">BUY Health +10</button>
-        <button onclick="addHealth(20)">BUY Health +20</button>
-        <button onclick="addHealth(50)">BUY Health +50</button>
+        <button onclick="addHealth(10)">Boost Heroes +10</button>
+        <button onclick="addHealth(20)">Boost Heroes +20</button>
+        <button onclick="addHealth(50)">Boost Heroes +50</button>
+        <button onclick="boostHero(30, 'Slate Slabrock')">Boost Slate</button>
+        <button onclick="boostHero(30, 'Flint Ironstag')">Boost Flint</button>
+        
       </div>
       <div class="col-2 border">
         <button onclick="resetGame()">Reset</button>
