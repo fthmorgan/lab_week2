@@ -74,11 +74,21 @@ function bossIsDefeated() {
   return boss.health <= 0
 }
 
+function herosAreDefeated() {
+  allHerosDead = heroes.every(hero => hero.health < 0)
+  if (allHerosDead) {
+    window.alert('You Died')
+    resetGame()
+  }
+}
+
 function damageHeros() {
   let damage = boss.damage
   heroes.forEach(hero => {
     hero.health -= damage
   });
+  herosAreDefeated()
+  console.log(damage)
   drawScreen()
 }
 function drawScreen() {
@@ -133,8 +143,8 @@ function resetGame() {
   restoreBossHealth()
   heroPoints = 0
   drawScreen()
-  setInterval(damageHeros, 5000)
 }
+console.log(setInterval)
 
-
+setInterval(damageHeros, 1000)
 resetGame()
